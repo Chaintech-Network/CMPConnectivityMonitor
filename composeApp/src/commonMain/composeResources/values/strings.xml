@@ -1,0 +1,7 @@
+<resources>
+    <string name="connected">Connected</string>
+    <string name="oops">Ooops!</string>
+    <string name="offline">You're offline</string>
+    <string name="something_went_wrong">Something went wrong. Try refreshing the page or checking your internet connection.</string>
+    <string name="try_again">Try Again</string>
+</resources>
