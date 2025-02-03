@@ -52,7 +52,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun App()  {
+internal fun App() {
     val viewModel = remember { ConnectivityViewModel() }
     val connectivityStatus by viewModel.connectivityStatus.collectAsState()
 

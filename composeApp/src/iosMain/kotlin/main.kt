@@ -2,4 +2,4 @@ import androidx.compose.ui.window.ComposeUIViewController
 import chaintech.network.app.App
 import platform.UIKit.UIViewController
 
-fun MainViewController(): UIViewController = ComposeUIViewController { App() }
+fun MainViewController(): UIViewController = ComposeUIViewController(configure = { enforceStrictPlistSanityCheck = false }) { App() }

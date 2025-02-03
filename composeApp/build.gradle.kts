@@ -1,8 +1,5 @@
-import org.jetbrains.compose.ExperimentalComposeLibrary
-import com.android.build.api.dsl.ManagedVirtualDevice
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -21,15 +18,6 @@ kotlin {
                 }
             }
         }
-        //https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        instrumentedTestVariant {
-            sourceSetTree.set(KotlinSourceSetTree.test)
-            dependencies {
-                debugImplementation(libs.androidx.testManifest)
-                implementation(libs.androidx.junit4)
-            }
-        }
     }
 
     listOf(
@@ -43,6 +31,8 @@ kotlin {
         }
     }
 
+    jvm()
+
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -51,14 +41,8 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
-            implementation("network.chaintech:sdp-ssp-compose-multiplatform:1.0.4")
-            implementation("network.chaintech:compose-connectivity-monitor:1.0.0")
-        }
-
-        commonTest.dependencies {
-            implementation(kotlin("test"))
-            @OptIn(ExperimentalComposeLibrary::class)
-            implementation(compose.uiTest)
+            implementation(libs.sdp.ssp)
+            implementation(libs.network.monitor)
         }
 
         androidMain.dependencies {
@@ -66,19 +50,19 @@ kotlin {
             implementation(libs.androidx.activityCompose)
         }
 
-        iosMain.dependencies {
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
         }
-
     }
 }
 
 android {
     namespace = "chaintech.network.app"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
 
         applicationId = "chaintech.network.app.androidApp"
         versionCode = 1
@@ -90,17 +74,7 @@ android {
         manifest.srcFile("src/androidMain/AndroidManifest.xml")
         res.srcDirs("src/androidMain/res")
     }
-    //https://developer.android.com/studio/test/gradle-managed-devices
-    @Suppress("UnstableApiUsage")
-    testOptions {
-        managedDevices.devices {
-            maybeCreate<ManagedVirtualDevice>("pixel5").apply {
-                device = "Pixel 5"
-                apiLevel = 34
-                systemImageSource = "aosp"
-            }
-        }
-    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -108,5 +82,16 @@ android {
     buildFeatures {
         //enables a Compose tooling support in the AndroidStudio
         compose = true
+    }
+}
+compose.desktop {
+    application {
+        mainClass = "MainKt"
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "org.chaintech.app.desktopApp"
+            packageVersion = "1.0.0"
+        }
     }
 }
