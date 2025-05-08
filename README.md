@@ -1,13 +1,14 @@
 # Compose Multiplatform Connectivity Monitor
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-connectivity-monitor.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-connectivity-monitor)
-[![Kotlin](https://img.shields.io/badge/kotlin-v2.1.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.7.3-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Kotlin](https://img.shields.io/badge/kotlin-v2.1.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.8.0_rc01-blue)](https://github.com/JetBrains/compose-multiplatform)
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-FF375F.svg?style=flat)
 ![badge-desktop](http://img.shields.io/badge/platform-desktop-FF9500.svg?style=flat)
+![badge-desktop](http://img.shields.io/badge/platform-wasm-42F59E.svg?style=flat)
 
-CMPConnectivityMonitor is a Compose Multiplatform library that provides seamless network connectivity monitoring for Android, iOS and Desktop platforms. It helps you easily detect and respond to changes in network status within your Compose Multiplatform applications.
+CMPConnectivityMonitor is a Compose Multiplatform library that provides seamless network connectivity monitoring for Android, iOS, wasmJs and Desktop platforms. It helps you easily detect and respond to changes in network status within your Compose Multiplatform applications.
 
 ![git-banner](./assets/git-banner.webp)
 
@@ -15,7 +16,7 @@ CMPConnectivityMonitor is a Compose Multiplatform library that provides seamless
 - Monitors network connectivity status in real-time.
 - Supports both Wi-Fi and Cellular network types.
 - Provides connectivity status updates via a simple and consistent API.
-- Supports iOS, Android and Desktop platforms.
+- Supports iOS, Android, wasmJs and Desktop platforms.
 
 ## Installation
 
@@ -23,7 +24,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-connectivity-monitor:1.0.1")
+    implementation("network.chaintech:compose-connectivity-monitor:1.0.2")
 }
 ```
 ## Setup

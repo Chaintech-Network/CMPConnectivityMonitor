@@ -1,11 +1,11 @@
 [versions]
 
-kotlin = "2.1.0"
-compose = "1.7.3"
+kotlin = "2.1.20"
+compose = "1.8.0-rc01"
 agp = "8.7.3"
-androidx-activityCompose = "1.10.0"
-sdp_ssp_version = "1.0.4"
-network_monitor_version = "1.0.1"
+androidx-activityCompose = "1.10.1"
+sdp_ssp_version = "1.0.6"
+network_monitor_version = "1.0.2"
 
 [libraries]
 
@@ -20,4 +20,4 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-mavenPublish = { id = "com.vanniktech.maven.publish", version = "0.29.0" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version = "0.31.0" }
