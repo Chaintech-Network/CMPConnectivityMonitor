@@ -1,7 +1,7 @@
 # Compose Multiplatform Connectivity Monitor
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-connectivity-monitor.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-connectivity-monitor)
-[![Kotlin](https://img.shields.io/badge/kotlin-v2.1.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.8.0_rc01-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Kotlin](https://img.shields.io/badge/kotlin-v2.2.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.8.2-blue)](https://github.com/JetBrains/compose-multiplatform)
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-FF375F.svg?style=flat)
@@ -24,9 +24,18 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-connectivity-monitor:1.0.2")
+    implementation("network.chaintech:compose-connectivity-monitor:1.0.3")
 }
 ```
+
+## ⚙️ Customizing the Test URL for Network Checks
+By default, the library uses https://www.google.com to check internet connectivity. If this URL is blocked or inaccessible in your region, you can override it with a custom endpoint using:
+```kotlin
+NetworkReachabilityConfig.configureTestUrl("https://example.com/ping") // Set a custom URL
+```
+This will change the URL used by internal network reachability checks across all supported platforms.
+
+
 ## Setup
 ### Android
 In your AppActivity, initialize the ConnectivityMonitor:
