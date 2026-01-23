@@ -1,11 +1,11 @@
 [versions]
 
-kotlin = "2.2.0"
-compose = "1.8.2"
-agp = "8.7.3"
-androidx-activityCompose = "1.10.1"
+kotlin = "2.3.0"
+compose = "1.10.0"
+agp = "8.11.2"
+androidx-activityCompose = "1.12.2"
 sdp_ssp_version = "1.0.7"
-network_monitor_version = "1.0.2"
+network_monitor_version = "1.0.4"
 
 [libraries]
 
